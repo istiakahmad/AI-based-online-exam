@@ -19,7 +19,7 @@ def create(c):
 def insert(c):
     sql_insert = """INSERT INTO users
     (id, name)
-    VALUES (1, 'ahmad'), (2, 'anika'), (3, 'rakin');
+    VALUES (1, 'ahmad'), (2, 'anika'), (3, 'rakin'), (4, 'Istiak');
     """
     c.executescript(sql_insert)
     print("Inserted")
