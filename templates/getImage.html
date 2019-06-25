@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Post an Image test</title>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <link href="static/exam.css" rel="stylesheet">
+
+</head>
+<style>
+    /* mirror the image */
+    video, canvas {
+    transform: scale(-1, 1); /*For Firefox (& IE) */
+    -webkit-transform: scale(-1, 1); /*for Chrome & Opera (& Safari) */
+}
+
+
+</style>
+<body>
+
+<div class="bdy">
+    <div class="hfullimg"><img src="hand.png" style="margin:10px 0 0 30%;width:70px;height:50px;"><b
+            style="font-size:40px;margin-left:30px;">Online Exam</b>
+    </div>
+
+    <div class="cont">
+        <div class="camera">
+            <video autoplay id="myVideo"></video>
+        </div>
+        <div class="cont2">
+            <div id="demo1" style="display:block; font-size:20px;"></br>
+                Which of the following browser supports HTML5 in its latest version? </br>
+                </br><input name="ques11" onclick="myFunction2()" type="radio"> Mozilla Firefox
+                </br><input name="ques12" onclick="myFunction2()" type="radio"> Opera
+                </br><input name="ques13" onclick="myFunction2()" type="radio"> Both of the above
+                </br><input name="ques14" onclick="myFunction2()" type="radio"> None of the above
+            </div>
+            <div id="demo2" style="display:none"></br>
+                Which of the following is a component of CSS style rule?</br>
+                </br><input name="ques2" onclick="myFunction3()" type="radio">Selector
+                </br><input name="ques2" onclick="myFunction3()" type="radio"> Property
+                </br><input name="ques2" onclick="myFunction3()" type="radio"> Value
+                </br><input name="ques2" onclick="myFunction3()" type="radio"> None
+            </div>
+            <div id="demo3" style="display:none"></br>
+                Which of the following property is used to set the text direction?</br>
+                </br><input name="ques3" type="radio">Color
+                </br><input name="ques3" type="radio"> Direction
+                </br><input name="ques3" type="radio"> Letter-Spacing
+                </br><input name="ques3" type="radio"> Word-Spacing
+            </div>
+
+            <div>
+                <button onclick="al()"
+                            style="border:1px solid tomato;color:white;background-color:tomato;font-size:20px;padding:10px;"
+                            type="button">
+                        Submit-Exam
+                </button>
+            </div>
+        </div>
+
+        <div class="cont3">
+            <ul>
+                <li id="t1">
+                    <button onclick="al()"
+                            style="border:1px solid tomato;color:white;background-color:tomato;font-size:20px;padding:10px;"
+                            type="button">
+                        Submit-Exam
+                    </button>
+                </li>
+                </br>
+                <li id="t2">
+                    <button onclick="a2()"
+                            style="border:1px solid tomato;color:white;background-color:black;font-size:17px;"
+                            type="button">
+                        Show-Result
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="cont4"><h1>Time --</h1>
+            <p> Total Time: 2:0:0</p>
+
+        </div>
+    </div>
+
+    <div class="footer">
+
+        <div class="ftr">Developed by Istiak Ahmad</div>
+    </div>
+</div>
+
+
+<script>
+
+var video = document.querySelector("#myVideo");
+let v = document.getElementById("myVideo");
+//create a canvas to grab an image for upload
+let imageCanvas = document.createElement('canvas');
+let imageCtx = imageCanvas.getContext("2d");
+var time = 1;
+
+navigator.getMedia = ( navigator.getUserMedia ||
+                       navigator.webkitGetUserMedia ||
+                       navigator.mozGetUserMedia ||
+                       navigator.msGetUserMedia);
+
+navigator.getMedia({video: true}, function(stream) {
+  // webcam is available
+  video.srcObject = stream;
+  var interval = setInterval(function() {
+   if (time <= 100) {
+      sendImagefromCanvas();
+      time++;
+   }
+   else {
+      clearInterval(interval);
+   }
+   }, 8000);
+
+}, function() {
+    alert("You have to give the permission to access the webcam and reload it again");
+  // webcam is not available
+});
+
+    //Add file blob to a form and post
+    function postFile(file) {
+        let formdata = new FormData();
+        formdata.append("image", file);
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', '/image', true);
+        console.log(xhr.open('POST', '/image', true));
+
+        xhr.onload = function () {
+            if (this.status === 200)
+                console.log(this.response);
+            else
+                console.error(xhr);
+        };
+        xhr.send(formdata);
+    }
+
+    //Get the image from the canvas
+    function sendImagefromCanvas() {
+
+        //Make sure the canvas is set to the current video size
+        imageCanvas.width = v.videoWidth;
+        imageCanvas.height = v.videoHeight;
+
+        imageCtx.drawImage(v, 0, 0, v.videoWidth, v.videoHeight);
+
+        //Convert the canvas to blob and post the file
+        imageCanvas.toBlob(postFile, 'image/jpeg');
+    }
+
+    window.onload = function () {
+
+        //Get camera video
+        navigator.mediaDevices.getUserMedia({video: {width: 640, height: 480}, audio: false})
+            .then(stream => {
+                v.srcObject = stream;
+            })
+            .catch(err => {
+                console.log('navigator.getUserMedia error: ', err)
+            });
+
+    };
+
+
+
+function myFunction1() {
+    document.getElementById("demo1").style.fontSize = "20px";
+ document.getElementById("demo1").style.display="block";
+  document.getElementById("demo2").style.display="none";
+  document.getElementById("demo3").style.display="none";
+}
+   function myFunction2() {
+    document.getElementById("demo2").style.fontSize = "20px";
+ document.getElementById("demo2").style.display="block";
+      document.getElementById("demo1").style.display="none";
+  document.getElementById("demo3").style.display="none";
+}
+   function myFunction3() {
+    document.getElementById("demo3").style.fontSize = "20px";
+ document.getElementById("demo3").style.display="block";
+      document.getElementById("demo1").style.display="none";
+  document.getElementById("demo2").style.display="none";
+}
+   function al(){
+     alert("are you want submit Exam")
+   }
+
+   function a2(){
+     alert("are you want submit Exam")
+   }
+
+
+
+</script>
+
+
+</body>
+
+</html>

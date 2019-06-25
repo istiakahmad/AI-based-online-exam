@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link href="static/logincp.css" rel="stylesheet">
+
+</head>
+
+<body>
+<div id="container">
+
+    <div id="form_box">
+        <form action="" method="post">
+            <p id="form_heading">Login Form</p>
+            <input name="username" placeholder="phone number" type="text"><br/>
+            <input name="password" placeholder="Enter Password" type="password"><br/>
+            <input id="checkbox" type="checkbox"><label for="checkbox"
+                                                        style="color:white; font-size:15px; padding-down: 15px;">Remember
+            Me</label><br/>
+            <input type="submit" value="Login"><br/>
+            <!--
+            <a class="btn btn-primary btn-lg" href="{{url_for('recognition')}}"  style="width:90px; height:auto; text-align:center;" value="Login">Button</a>
+             -->
+        </form>
+    </div>
+</div>
+
+<script>
+    function create_UUID(){
+    var dt = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (dt + Math.random()*16)%16 | 0;
+        dt = Math.floor(dt/16);
+        return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+    });
+    return uuid;
+  }
+
+  console.log(create_UUID());
+
+
+</script>
+</body>
+</html>

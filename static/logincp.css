@@ -1,0 +1,108 @@
+body {
+  background-image: url("https://lh3.googleusercontent.com/SZeZXOQ-h4PmkiQ-IWaa925Y9l1TdcYqQBAXlq3rl2VC3NA_e2kmoLeZlDZ3GS7IGU3YsB3PpgdIzFepd549N49csbGR__0-ypzi8mg2agZHTdAQycpOQj7elR7lh6X_9CVu3ff0A2B_Y3uNkTPHQojoOb3MzzUKxI05WgUmmwinXH9-dzjAlEEwRMBWr8s2w7B1QlFLt62uFzHTSy8MTep48Vk-l5bMUb7Axtx_ZQ-Xqoa1s9E9XPEXmla1OCifC7S25DRWIHxmG0PITLFZTg3BP3mmMwiFPnnGbR50TKyP3or6RUete3TC3etu8r64-yeSATlwB_EasjfvxrluuP-XiYNkK70ln_FwuIs4toqSCqkHjMrHLeNbP_z8CC_9pwD9DJ5bNgWk3ifCznrYsAhx9kp1iyuw0hY-ZmmEAHrA_ze0pSiecJoQdfqUVcTqgVsZHCYXNYL3d-oKTn9l4ZHv8f1q4B1ryHXm5p7LVt_w8nga0U_jMQ7dcm3jRQ4o21vHUBFb7vL_uVEV2VzZU99Qmt_I4r8MKIxTA-hTEOOnlOwKei8r3OWbca-Za2aEqSxEDU63HAbJA-b3zmS__FIvxxHEHKi_95ol9FoVQog00KXxX58ZOTHWs7U443c=w1010-h631-no");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 25px;
+  font-family: 'Raleway', 'arial';
+  font-weight: 100;
+}
+
+@media screen and (max-width: 1300px) {
+  body {
+    background-size: auto;
+  }
+}
+
+#container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#logo_bar {
+  background: rgba(0, 0, 0, 0.5);
+  width: 300px;
+  color: white;
+  margin-bottom: -30px;
+  padding: 10px 0;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#logo {
+  max-width: 50px;
+  max-height: 50px;
+  vertical-align: middle;
+}
+
+#form_box {
+  background: rgba(0, 0, 0, 0.5);
+  width: 300px;
+  height: auto;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#form_heading {
+  color: #ff7b00;
+  padding: 15px 0 0 10px;
+  font-family: 'Raleway', 'arial';
+  font-weight: 100;
+  font-size: 1.5em;
+}
+
+#font_20 {
+  font-size: 15px;
+}
+
+input {
+  background: none;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #DDDDDD;
+  color: white;
+  font-family: 'Raleway', 'arial';
+  font-weight: 100;
+  font-size: 17px;
+}
+
+input:focus {
+  box-shadow: 0 0 10px rgba(255, 123, 0, 1);
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid rgba(255, 123, 0, 1);
+}
+
+input[type=submit]:hover {
+  cursor: pointer;
+}
+
+#credits_box {
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  width: 380px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  font-family: 'Raleway', 'arial';
+  font-weight: 100;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: antiquewhite;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
